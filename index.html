@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <h1>What would you like to add to the list?</h1>
-    <input type="text" id="item-to-add">
-    <button id="btn-add-item">Add item</button>
-    <button id="btn-clear-list">Clear List</button>
-    <div id="list-of-items">
-        <ul>      
-            <!-- <li><input type="checkbox" id="test"><label for="test"></label></li> -->
-        </ul>
+    <div id="intro-screen">
+        <h1>To-do List!</h1>
+        <h2>Sign In!</h2>
+        <h3>Email</h3>
+        <input type="text" id="email-field">
+        <h3>Password</h3>
+        <input type="password" id="password-field">
+        <h2>Sign Up!</h2>
+    </div>
+    <div id="list-screen">
+        <h1>What would you like to add to the list?</h1>
+        <input type="text" id="item-to-add">
+        <button id="btn-add-item">Add item</button>
+        <button id="btn-clear-list">Clear List</button>
+        <div id="list-of-items">
+            <ul>
+
+            </ul>
+        </div>
     </div>
     <script src="index.js"></script>
 </body>
+
 </html>

@@ -20,21 +20,19 @@ var addItemToList = function() {
         newListItem.appendChild(labelForItem);
         listOfItems.appendChild(newListItem);
         uniqueID++;
-        checkboxForItem.addEventListener('click', () => {
+        // When a user crosses something off of their list, there will be a 4 second cooldown before it is deleted from the list
+        checkboxForItem.addEventListener('click', () => { 
             labelForItem.classList.toggle("crossed-out");
             setTimeout(() => {
                 newListItem.remove();
             }, "4000");
-            
         });
         itemToAdd.value = "";
     }
-   
 }
 
 var clearList = function() {
     var allItems = document.querySelectorAll("li");
-    var numDone = 0;
     for (var i = 0; i < allItems.length; i++) {
         allItems[i].remove();
     }

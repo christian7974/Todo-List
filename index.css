@@ -2,6 +2,10 @@ body {
     background-color: antiquewhite;
 }
 
+li {
+    list-style-type: none;
+}
+
 #item-to-add {
     font-size: 20px;
 }
@@ -13,6 +17,7 @@ label {
 button {
     border-radius: 25px;
     font-size: 15px;
+    margin-right: 10px;
 }
 
 label.crossed-out {
@@ -22,4 +27,16 @@ label.crossed-out {
 
 .list-checkbox {
     margin-right: 10px;
+}
+
+#intro-screen {
+    padding-left: 25px;
+    /* border: red dotted; */
+    float: left;
+}
+
+#list-screen {
+    /* border: red dotted; */
+    width: 50%;
+    float: right;
 }
