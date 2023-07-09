@@ -39,4 +39,5 @@ label.crossed-out {
     /* border: red dotted; */
     width: 50%;
     float: right;
+    display: none;
 }
