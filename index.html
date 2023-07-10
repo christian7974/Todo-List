@@ -13,16 +13,18 @@
         <h1>To-do List!</h1>
         <h2>Sign In!</h2>
         <h3>Email</h3>
-        <input type="text" id="email-field">
+        <input type="text" id="sign-in-email">
         <h3>Password</h3>
-        <input type="password" id="password-field">
+        <input type="password" id="sign-in-password">
         <br><br>
         <button id="btn-sign-in">Sign in!</button>
         <h2>Sign Up!</h2>
         <h3>Email</h3>
-        <input type="text" id="sign-in-email">
+        <input type="text" id="email-field">
         <h3>Password</h3>
-        <input type="password" id="sign-in-password">
+        <input type="password" id="password-field">
+        <h3>Name</h3>
+        <input type="text" id="sign-up-name">
         <br><br>
         <button id="btn-sign-up">Sign up!</button>
     </div>
@@ -73,6 +75,8 @@
         const userPassword = document.getElementById("password-field");
         const signUpButton = document.getElementById("btn-sign-up");
 
+        const signUpName = document.getElementById("sign-up-name");
+
         const signInEmail = document.getElementById("sign-in-email");
         const signInPassword = document.getElementById("sign-in-password");
         const signInButton = document.getElementById("btn-sign-in");
@@ -88,10 +92,10 @@
             .then((userCredential) => {
                 const user = userCredential.user;
                 alert("Your account has been created!");
+                // store tasks where key is uniqueID, value is the item
                 set(ref(db, "People/" + user.uid), {
-                    Name: enterName.value,
-                    ID: enterID.value,
-                    Age: enterAge.value
+                    Name: signUpName.value,
+                    items: {},
             })
             })
             .catch((error) => {
@@ -102,9 +106,9 @@
         };
 
         const userSignIn = async() => {
-            const signInEmail = userEmail.value;
-            const signInPassword = userPassword.value;
-            signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+            const signInEmailVal = signInEmail.value;
+            const signInPasswordVal = signInPassword.value;
+            signInWithEmailAndPassword(auth, signInEmailVal, signInPasswordVal)
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
