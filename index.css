@@ -38,6 +38,6 @@ label.crossed-out {
 #list-screen {
     /* border: red dotted; */
     width: 50%;
-    float: right;
-    display: none;
+    /* float: right; */
+    /* display: none; */
 }

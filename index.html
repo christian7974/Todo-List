@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="intro-screen">
+    <!-- <div id="intro-screen">
         <h1>To-do List!</h1>
         <h2>Sign In!</h2>
         <h3>Email</h3>
@@ -27,7 +27,7 @@
         <input type="text" id="sign-up-name">
         <br><br>
         <button id="btn-sign-up">Sign up!</button>
-    </div>
+    </div> -->
     <div id="list-screen">
         <h1>What would you like to add to the list?</h1>
         <input type="text" id="item-to-add">
@@ -41,106 +41,6 @@
         </div>
     </div>
     <script src="index.js"></script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-        import {
-            getAuth, 
-            createUserWithEmailAndPassword,
-            signInWithEmailAndPassword,
-            onAuthStateChanged,
-            signOut
-        } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-        import {getDatabase, set, get, update, remove, ref, child} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
-        
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-        apiKey: "AIzaSyCnAoDMFpJ3wN9Gvje5GMefmkdi7UhwHYM",
-        authDomain: "todo-list-9db59.firebaseapp.com",
-        projectId: "todo-list-9db59",
-        storageBucket: "todo-list-9db59.appspot.com",
-        messagingSenderId: "462327275050",
-        appId: "1:462327275050:web:6af7166d0d352034b0ad53"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getDatabase();
-
-        const userEmail = document.getElementById("email-field");
-        const userPassword = document.getElementById("password-field");
-        const signUpButton = document.getElementById("btn-sign-up");
-
-        const signUpName = document.getElementById("sign-up-name");
-
-        const signInEmail = document.getElementById("sign-in-email");
-        const signInPassword = document.getElementById("sign-in-password");
-        const signInButton = document.getElementById("btn-sign-in");
-
-        const listScreen = document.getElementById("list-screen");
-        const signOutButton = document.getElementById("btn-sign-out");
-        listScreen.style.display = 'none';
-
-        const userSignUp = async() => {
-            const signUpEmail = userEmail.value;
-            const signUpPassword = userPassword.value;
-            createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                alert("Your account has been created!");
-                // store tasks where key is uniqueID, value is the item
-                set(ref(db, "People/" + user.uid), {
-                    Name: signUpName.value,
-                    items: {},
-            })
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode + errorMessage);
-            })
-        };
-
-        const userSignIn = async() => {
-            const signInEmailVal = signInEmail.value;
-            const signInPasswordVal = signInPassword.value;
-            signInWithEmailAndPassword(auth, signInEmailVal, signInPasswordVal)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user);
-                alert("You have signed in successfully!");
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode + errorMessage);
-            })
-        }
-
-        const checkAuthState = async() => {
-            onAuthStateChanged(auth, user => {
-                if (user) {
-                    listScreen.style.display = 'block';
-                } else {
-                    listScreen.style.display = 'none';
-                }
-            })
-        }
-
-        const userSignOut = async() => {
-            await signOut(auth);
-        }
-
-        checkAuthState();
-
-        signUpButton.addEventListener('click', userSignUp);
-        signInButton.addEventListener('click', userSignIn);
-        signOutButton.addEventListener('click', userSignOut);
-    </script>
 </body>
 
 </html>
